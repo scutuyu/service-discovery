@@ -3,7 +3,7 @@
 
 ## 构建步骤
 ```
-# 1. git clone xxx
+# 1. git clone https://github.com/scutuyu/service-discovery.git
 # 2. 使用vs code导入项目
 # 3. 打开vs code的控制台, `npm install`
 # 4. 浏览器输入`localhost:8084`,点击按钮调用微服务（前提是要让zookeeper先启动起来，并且让服务提供者想zookeeper注册服务）
