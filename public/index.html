@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo</title>
+</head>
+<body>
+<div id="console"></div>
+<div id="container">
+    <h1>
+        微服务测试
+    </h1>
+</div>
+<button id="btn" >点击调用微服务服务</button>
+
+</body>
+<script src="js/jquery-2.2.3.min.js"></script>
+<script>
+    $(function () {
+        $("#btn").click(function () {
+            //alert("hello world");
+            $.ajax({
+                method: 'GET',
+                url: '/hello',
+                headers: {
+                    'Service-Name': 'HelloService'
+                },
+                success: function (data) {
+                    console.log("success: ", data);
+                    $("#console").text(JSON.stringify(data));
+                },
+                error: function(res){
+                    $('#console').remove()
+                    if(res.status === 500){
+                        var string = res.responseText
+                        var json = JSON.parse(string)
+                        alert(json.msg)
+                    }                    
+                }
+            })
+        });
+
+    })
+</script>
+</html>
